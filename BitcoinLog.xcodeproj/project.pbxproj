@@ -21,6 +21,7 @@
 		7F9BA2141BE418FE00695B3F /* BitcoinApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9BA2131BE418FE00695B3F /* BitcoinApi.swift */; };
 		7F9BA2201BE534FD00695B3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9BA21D1BE534F300695B3F /* Alamofire.framework */; };
 		7FC69AA01BEBF90800A3D032 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC69A9F1BEBF90800A3D032 /* DetailTableViewController.swift */; };
+		7FC69AE11BF1409100A3D032 /* FavouriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC69AE01BF1409100A3D032 /* FavouriteService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		7F9BA2151BE534AD00695B3F /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Pods/Alamofire/Source/Alamofire.swift; sourceTree = "<group>"; };
 		7F9BA2171BE534F300695B3F /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		7FC69A9F1BEBF90800A3D032 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		7FC69AE01BF1409100A3D032 /* FavouriteService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteService.swift; sourceTree = "<group>"; };
 		C97FAE37530DAC284E47A420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 				7F9BA1E81BE412BA00695B3F /* Assets.xcassets */,
 				7F9BA1EA1BE412BA00695B3F /* LaunchScreen.storyboard */,
 				7F9BA1ED1BE412BA00695B3F /* Info.plist */,
+				7FC69AE01BF1409100A3D032 /* FavouriteService.swift */,
 			);
 			path = BitcoinLog;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				7F9BA2121BE416D000695B3F /* BitcoinRate.swift in Sources */,
 				7F9BA1E01BE412BA00695B3F /* AppDelegate.swift in Sources */,
 				7F9BA2141BE418FE00695B3F /* BitcoinApi.swift in Sources */,
+				7FC69AE11BF1409100A3D032 /* FavouriteService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
