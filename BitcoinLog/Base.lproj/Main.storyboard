@@ -307,25 +307,43 @@
             </objects>
             <point key="canvasLocation" x="-856" y="-330"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Favourites-->
         <scene sceneID="cRQ-fQ-nP4">
             <objects>
-                <tableViewController id="DoX-4b-CDt" sceneMemberID="viewController">
+                <tableViewController title="Favourites" id="DoX-4b-CDt" customClass="FavouritesViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0is-1H-g1a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EJG-yI-OtY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavouriteCell" id="EJG-yI-OtY" customClass="FavouritesTableViewCell" customModule="BitcoinLog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EJG-yI-OtY" id="ooa-RA-j33">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TickerLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmo-Kq-DyM">
+                                            <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="tmo-Kq-DyM" firstAttribute="leading" secondItem="ooa-RA-j33" secondAttribute="leadingMargin" id="5YH-aX-s7O"/>
+                                        <constraint firstItem="tmo-Kq-DyM" firstAttribute="top" secondItem="ooa-RA-j33" secondAttribute="topMargin" id="P85-D0-u3i"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tmo-Kq-DyM" secondAttribute="trailing" id="RDw-O4-UQX"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tmo-Kq-DyM" secondAttribute="bottom" id="x3v-dt-ByK"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="tickerLabel" destination="tmo-Kq-DyM" id="Gpw-6n-WM8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -333,7 +351,7 @@
                             <outlet property="delegate" destination="DoX-4b-CDt" id="UVv-PB-XmW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="gWm-My-Y6i"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="gWm-My-Y6i"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRJ-cq-4k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,10 +375,10 @@
             </objects>
             <point key="canvasLocation" x="-1356" y="1719"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="Mjh-FG-twM">
             <objects>
-                <tabBarController id="46L-O5-Uwo" sceneMemberID="viewController">
+                <tabBarController id="46L-O5-Uwo" customClass="MainTabBarController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gXe-pa-RLT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -457,6 +475,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>

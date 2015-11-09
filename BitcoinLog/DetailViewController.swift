@@ -13,12 +13,10 @@ class DetailViewController: UIViewController {
 
     @IBAction func favouiteButtonTouched(sender: UIButton) {
         if let item = self.detailItem {
-            if FavouriteService.isFavourite(item.tickerSymbol) {
-                print("Removing favourite \(item.tickerSymbol)...")
-                FavouriteService.removeFavourite(item.tickerSymbol)
+            if FavouritesService.isFavourite(item.tickerSymbol) {
+                FavouritesService.removeFavourite(item.tickerSymbol)
             } else {
-                print("Adding favourite \(item.tickerSymbol)...")
-                FavouriteService.addFavourite(item.tickerSymbol)
+                FavouritesService.addFavourite(item.tickerSymbol)
             }
         }
     }

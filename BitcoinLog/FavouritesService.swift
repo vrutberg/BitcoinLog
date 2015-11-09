@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavouriteService {
+class FavouritesService {
     private static let key = "favouriteExchangeRates"
     
     static func getAll() -> [String] {
