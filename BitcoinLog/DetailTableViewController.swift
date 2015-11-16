@@ -22,7 +22,6 @@ class DetailTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.configureView()
-        self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0)
     }
     
     override func didReceiveMemoryWarning() {
