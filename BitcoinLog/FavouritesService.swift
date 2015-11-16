@@ -10,11 +10,15 @@ import UIKit
 
 class FavouritesService {
     private static let key = "favouriteExchangeRates"
-    
-    static func getAll() -> [String] {
-        return NSUserDefaults.standardUserDefaults().objectForKey(key) as? [String] ?? [String]()
+
+    private static func getUserDefaults() -> NSUserDefaults {
+        return NSUserDefaults.standardUserDefaults()
     }
-    
+
+    static func getAll() -> [String] {
+        return self.getUserDefaults().objectForKey(key) as? [String] ?? [String]()
+    }
+
     static func isFavourite(ticker: String) -> Bool {
         return self.getAll().contains(ticker)
     }
@@ -25,7 +29,7 @@ class FavouritesService {
         if !favourites.contains(ticker) {
             favourites.append(ticker)
                 
-            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let userDefaults = self.getUserDefaults()
             userDefaults.setObject(favourites, forKey: self.key)
             userDefaults.synchronize()
         }
@@ -35,7 +39,7 @@ class FavouritesService {
         let favourites = self.getAll()
         let filteredFavourites = favourites.filter() { $0 != ticker }
 
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults = self.getUserDefaults()
         userDefaults.setObject(filteredFavourites, forKey: self.key)
         userDefaults.synchronize()
     }
