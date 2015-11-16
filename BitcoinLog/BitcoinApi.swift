@@ -11,8 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 public class BitcoinApi {
+
+    private let baseUrl = "https://api.bitcoinaverage.com/ticker/global"
+
     public func fetchAll(callback: ([BitcoinRate]) -> Void) {
-        Alamofire.request(.GET, "https://api.bitcoinaverage.com/ticker/global/all").responseJSON { response in
+        Alamofire.request(.GET, "\(self.baseUrl)/all").responseJSON { response in
             let json = JSON(response.result.value!).dictionary
             var arrayOfBitcoinRateObjects: [BitcoinRate] = []
             
@@ -32,6 +35,25 @@ public class BitcoinApi {
             
             arrayOfBitcoinRateObjects.sortInPlace({ $0.tickerSymbol < $1.tickerSymbol })
             callback(arrayOfBitcoinRateObjects)
+        }
+    }
+
+
+    public func fetchSingle(ticker: String, callback: (BitcoinRate) -> Void) {
+        Alamofire.request(.GET, "\(self.baseUrl)/\(ticker)").responseJSON { response in
+            let json = JSON(response.result.value!)
+
+            let rate = BitcoinRate(
+                tickerSymbol: ticker,
+                timestamp: json["timestamp"].stringValue,
+                avg24h: json["24h_avg"].floatValue,
+                ask: json["ask"].floatValue,
+                bid: json["bid"].floatValue,
+                last: json["last"].floatValue,
+                volume_btc: json["volume_btc"].floatValue,
+                volume_percent: json["volume_percent"].floatValue)
+
+            callback(rate)
         }
     }
 }
