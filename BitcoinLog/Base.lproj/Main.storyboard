@@ -508,6 +508,45 @@
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" id="Aby-tz-x9j" customClass="BitcoinValueTableViewCell" customModule="BitcoinLog" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="130" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aby-tz-x9j" id="ypS-Sv-3M4">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2764,90" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgW-6I-zkt">
+                                            <rect key="frame" x="417" y="8" width="175" height="27"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SEK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ8-Bf-pfE">
+                                            <rect key="frame" x="8" y="8" width="148" height="27"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="WJ8-Bf-pfE" firstAttribute="top" secondItem="ypS-Sv-3M4" secondAttribute="topMargin" id="OXb-O6-hwt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fgW-6I-zkt" secondAttribute="bottom" id="Qzq-8y-ZU4"/>
+                                        <constraint firstItem="fgW-6I-zkt" firstAttribute="trailing" secondItem="ypS-Sv-3M4" secondAttribute="trailingMargin" id="fTZ-TV-5YF"/>
+                                        <constraint firstItem="fgW-6I-zkt" firstAttribute="top" secondItem="ypS-Sv-3M4" secondAttribute="topMargin" id="gm3-ov-7RN"/>
+                                        <constraint firstItem="WJ8-Bf-pfE" firstAttribute="leading" secondItem="ypS-Sv-3M4" secondAttribute="leadingMargin" id="oQd-K3-pvv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WJ8-Bf-pfE" secondAttribute="bottom" id="u06-eM-eDN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="tickerLabel" destination="WJ8-Bf-pfE" id="00L-2a-OFI"/>
+                                    <outlet property="valueLabel" destination="fgW-6I-zkt" id="YRv-1F-brL"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>

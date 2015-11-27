@@ -21,8 +21,13 @@ public class BitcoinRate : ResponseObjectSerializable {
     let volume_btc: Float
     let volume_percent: Float
     
-    @objc required public init?(representation: AnyObject) {
+    @objc required public convenience init?(representation: AnyObject) {
         let json = JSON(representation)
+        self.init(tickerSymbol: nil, json: json)
+    }
+    
+    init(tickerSymbol: String?, json: JSON) {
+        self.tickerSymbol = tickerSymbol
         self.timestamp = json["timestamp"].stringValue
         self.avg24h = json["24h_avg"].floatValue
         self.ask = json["ask"].floatValue

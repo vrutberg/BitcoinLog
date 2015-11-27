@@ -30,9 +30,9 @@ class DetailTableViewController: UITableViewController {
     
     func configureView() {
         if let detail = self.rate {
-            askValueLabel.text = String(detail.ask) + " " + detail.tickerSymbol
-            bidValueLevel.text = String(detail.bid) + " " + detail.tickerSymbol
-            lastValueLabel.text = String(detail.last) + " " + detail.tickerSymbol
+            askValueLabel.text = String(detail.ask) + " " + detail.tickerSymbol!
+            bidValueLevel.text = String(detail.bid) + " " + detail.tickerSymbol!
+            lastValueLabel.text = String(detail.last) + " " + detail.tickerSymbol!
             
             volumeValueLabel.text = String(detail.volume_btc) + " BTC"
             volumePercentValueLabel.text = String(detail.volume_percent) + " %"

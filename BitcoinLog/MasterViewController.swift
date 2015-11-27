@@ -34,11 +34,11 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAll(self.populateData)
+        BitcoinApi.fetchAllDecoded(self.populateData)
     }
     
-    func populateData(objects: [BitcoinRate]) {
-        self.objects = objects
+    func populateData(objects: BitcoinRateList) {
+        self.objects = objects.bitcoinRates
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
