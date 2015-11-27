@@ -21,6 +21,10 @@ class FavouritesViewController: UITableViewController {
     
     func populateData() {
         self.objects = FavouritesService.getAll()
+        var myString: String?
+        
+        
+        
         
         self.objects.sortInPlace() { $0 < $1 }
         
@@ -35,17 +39,17 @@ class FavouritesViewController: UITableViewController {
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        /*if segue.identifier == "showDetail" {
+        if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! FavouriteDetailViewController
                 
-                controller.detailItem = object
-                controller.navigationItem.title = object.tickerSymbol
+                controller.ticker = object
+/*                controller.navigationItem.title = object.tickerSymbol*/
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
-        }*/
+        }
     }
     
     // MARK: - Table View

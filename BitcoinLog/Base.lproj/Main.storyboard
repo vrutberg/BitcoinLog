@@ -393,10 +393,10 @@
             </objects>
             <point key="canvasLocation" x="-1356" y="2537"/>
         </scene>
-        <!--Back-->
+        <!--Favourite Detail View Controller-->
         <scene sceneID="VlH-ny-nTH">
             <objects>
-                <viewController id="5SQ-V5-iJp" sceneMemberID="viewController">
+                <viewController id="5SQ-V5-iJp" customClass="FavouriteDetailViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ht9-2c-YMm"/>
                         <viewControllerLayoutGuide type="bottom" id="wFY-2X-tHM"/>
@@ -416,7 +416,10 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Back" id="KJJ-0j-286"/>
+                    <navigationItem key="navigationItem" id="KJJ-0j-286"/>
+                    <connections>
+                        <outlet property="label" destination="VWD-5h-Y89" id="ioI-GL-Za0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ge-7a-PcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

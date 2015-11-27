@@ -12,9 +12,9 @@ import SwiftyJSON
 
 public class BitcoinApi {
 
-    private let baseUrl = "https://api.bitcoinaverage.com/ticker/global"
+    private static let baseUrl = "https://api.bitcoinaverage.com/ticker/global"
 
-    public func fetchAll(callback: ([BitcoinRate]) -> Void) {
+    public static func fetchAll(callback: ([BitcoinRate]) -> Void) {
         Alamofire.request(.GET, "\(self.baseUrl)/all").responseJSON { response in
             let json = JSON(response.result.value!).dictionary
             var arrayOfBitcoinRateObjects: [BitcoinRate] = []
@@ -39,7 +39,7 @@ public class BitcoinApi {
     }
 
 
-    public func fetchSingle(ticker: String, callback: (BitcoinRate) -> Void) {
+    public static func fetchSingle(ticker: String, callback: (BitcoinRate) -> Void) {
         Alamofire.request(.GET, "\(self.baseUrl)/\(ticker)").responseJSON { response in
             let json = JSON(response.result.value!)
 
@@ -54,6 +54,28 @@ public class BitcoinApi {
                 volume_percent: json["volume_percent"].floatValue)
 
             callback(rate)
+        }
+    }
+    
+    public static func fetchAllDecoded<T : ResponseObjectSerializable>(ticker: String, callback: (value: T) -> Void) {
+        Alamofire.request(.GET, "\(self.baseUrl)/all").responseObject() { (response: Response<T,NSError>) -> Void in
+            if response.result.isSuccess {
+                if let type = response.result.value {
+                    callback(value: type)
+                }
+            }
+            
+        }
+    }
+    
+    public static func fetchSingleDecoded<T : ResponseObjectSerializable>(ticker: String, callback: (value: T) -> Void) {
+        Alamofire.request(.GET, "\(self.baseUrl)/\(ticker)").responseObject() { (response: Response<T,NSError>) -> Void in
+            if response.result.isSuccess {
+                if let type = response.result.value {
+                    callback(value: type)
+                }
+            }
+
         }
     }
 }

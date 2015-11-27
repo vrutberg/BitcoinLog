@@ -12,7 +12,6 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [BitcoinRate]()
-    var api: BitcoinApi? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class MasterViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "updateData", forControlEvents: UIControlEvents.ValueChanged)
         
-        api = BitcoinApi()
         self.updateData()
     }
 
@@ -36,9 +34,7 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        if let api = self.api {
-            api.fetchAll(self.populateData)
-        }
+        BitcoinApi.fetchAll(self.populateData)
     }
     
     func populateData(objects: [BitcoinRate]) {
