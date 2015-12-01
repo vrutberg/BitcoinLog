@@ -28,6 +28,7 @@
 		7FC69AE81BF14A7100A3D032 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC69AE71BF14A7100A3D032 /* FavouritesTableViewCell.swift */; };
 		7FC69AEA1BF14CC500A3D032 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC69AE91BF14CC500A3D032 /* MainTabBarController.swift */; };
 		7FEFD3051C089451009396F9 /* BitconRateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFD3041C089451009396F9 /* BitconRateList.swift */; };
+		7FEFD30C1C0E3D64009396F9 /* BitcoinRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFD30B1C0E3D64009396F9 /* BitcoinRequestRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		7FC69AE71BF14A7100A3D032 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		7FC69AE91BF14CC500A3D032 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7FEFD3041C089451009396F9 /* BitconRateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitconRateList.swift; sourceTree = "<group>"; };
+		7FEFD30B1C0E3D64009396F9 /* BitcoinRequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinRequestRouter.swift; sourceTree = "<group>"; };
 		C97FAE37530DAC284E47A420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 				7FC69AE01BF1409100A3D032 /* FavouritesService.swift */,
 				7F3D738C1BFF624E00941275 /* Request_extension.swift */,
 				7F3D73911BFF6B1E00941275 /* FavouriteDetailViewController.swift */,
+				7FEFD30B1C0E3D64009396F9 /* BitcoinRequestRouter.swift */,
 			);
 			path = BitcoinLog;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				7FC69AA01BEBF90800A3D032 /* DetailTableViewController.swift in Sources */,
 				7FC69AEA1BF14CC500A3D032 /* MainTabBarController.swift in Sources */,
 				7F9BA1E41BE412BA00695B3F /* DetailViewController.swift in Sources */,
+				7FEFD30C1C0E3D64009396F9 /* BitcoinRequestRouter.swift in Sources */,
 				7F9BA1E21BE412BA00695B3F /* MasterViewController.swift in Sources */,
 				7F9BA2101BE414C300695B3F /* BitcoinValueTableViewCell.swift in Sources */,
 				7FC69AE81BF14A7100A3D032 /* FavouritesTableViewCell.swift in Sources */,

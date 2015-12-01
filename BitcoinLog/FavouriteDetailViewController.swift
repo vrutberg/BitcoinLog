@@ -30,7 +30,7 @@ class FavouriteDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        BitcoinApi.fetchSingleDecoded(ticker!) { (value: BitcoinRate) -> Void in
+        BitcoinApi.fetchSingleRate(ticker!) { (value: BitcoinRate) -> Void in
             self.label.text = String(value.bid)
         }
     }

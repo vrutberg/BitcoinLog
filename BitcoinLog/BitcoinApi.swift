@@ -11,26 +11,22 @@ import Alamofire
 import SwiftyJSON
 
 public class BitcoinApi {
-    private static let baseUrl = "https://api.bitcoinaverage.com/ticker/global"
-    
-    public static func fetchAllDecoded<T : ResponseObjectSerializable>(callback: (value: T) -> Void) {
-        Alamofire.request(.GET, "\(self.baseUrl)/all").responseObject() { (response: Response<T,NSError>) -> Void in
-            if response.result.isSuccess {
-                if let type = response.result.value {
-                    callback(value: type)
-                }
-            }
-        }
+    public static func fetchAllRates<T : ResponseObjectSerializable>(callback: (value: T) -> Void) {
+        self.makeApiCall(BitcoinRequestRouter.AllRates, callback: callback)
     }
     
-    public static func fetchSingleDecoded<T : ResponseObjectSerializable>(ticker: String, callback: (value: T) -> Void) {
-        Alamofire.request(.GET, "\(self.baseUrl)/\(ticker)").responseObject() { (response: Response<T,NSError>) -> Void in
+    public static func fetchSingleRate<T : ResponseObjectSerializable>(ticker: String, callback: (value: T) -> Void) {
+        self.makeApiCall(BitcoinRequestRouter.SingleRate(ticker), callback: callback)
+    }
+    
+    private static func makeApiCall<T: ResponseObjectSerializable>(route: BitcoinRequestRouter, callback: (value: T) -> Void) {
+        Alamofire.request(route.method, route.URLRequest).responseObject() { (response: Response<T,NSError>) -> Void in
             if response.result.isSuccess {
                 if let type = response.result.value {
                     callback(value: type)
                 }
             }
-
+            
         }
     }
 }

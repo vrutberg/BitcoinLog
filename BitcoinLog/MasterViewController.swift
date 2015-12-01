@@ -34,7 +34,7 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAllDecoded(self.populateData)
+        BitcoinApi.fetchAllRates(self.populateData)
     }
     
     func populateData(objects: BitcoinRateList) {
