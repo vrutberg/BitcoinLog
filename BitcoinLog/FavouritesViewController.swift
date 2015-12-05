@@ -9,11 +9,7 @@
 import UIKit
 
 class FavouritesViewController: UITableViewController {
-    var rates = [BitcoinRate]() {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    var rates = [BitcoinRate]()
     
     override func viewDidAppear(animated: Bool) {
         self.populateData()
@@ -22,6 +18,7 @@ class FavouritesViewController: UITableViewController {
     func populateData() {
         BitcoinApi.fetchMultipleRates(FavouritesService.getAll()).then({ rateList in
             self.rates = rateList.bitcoinRates
+            self.tableView.reloadData()
         })
     }
     
@@ -63,9 +60,8 @@ class FavouritesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            let rateToBeRemoved = self.rates[indexPath.row]
-            FavouritesService.removeFavourite(rateToBeRemoved.tickerSymbol!)
-            self.populateData()
+            self.rates.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath],  withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     
