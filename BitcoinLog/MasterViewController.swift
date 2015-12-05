@@ -11,7 +11,12 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [BitcoinRate]()
+    var objects = [BitcoinRate]() {
+        didSet {
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +39,9 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAllRates(self.populateData)
-    }
-    
-    func populateData(objects: BitcoinRateList) {
-        self.objects = objects.bitcoinRates
-        self.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
+        BitcoinApi.fetchAllRatesWithPromise().then({ bitcoinRateList in
+            self.objects = bitcoinRateList.bitcoinRates
+        })
     }
 
     override func didReceiveMemoryWarning() {

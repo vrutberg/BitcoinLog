@@ -24,4 +24,8 @@ public class BitcoinRateList : ResponseObjectSerializable {
         
         bitcoinRates = arrayOfBitcoinRateObjects.sort { $0.tickerSymbol < $1.tickerSymbol }
     }
+    
+    public init(rates: [BitcoinRate]) {
+        bitcoinRates = rates.sort { $0.tickerSymbol < $1.tickerSymbol }
+    }
 }
