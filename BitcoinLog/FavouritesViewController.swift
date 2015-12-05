@@ -9,7 +9,11 @@
 import UIKit
 
 class FavouritesViewController: UITableViewController {
-    var rates = [BitcoinRate]()
+    var rates = [BitcoinRate]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +25,6 @@ class FavouritesViewController: UITableViewController {
     func populateData() {
         BitcoinApi.fetchMultipleRates(FavouritesService.getAll()).then({ rateList in
             self.rates = rateList.bitcoinRates
-            self.tableView.reloadData()
         })
     }
     
