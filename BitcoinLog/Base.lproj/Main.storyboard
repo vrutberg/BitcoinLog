@@ -290,7 +290,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezp-fc-qyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="902"/>
+            <point key="canvasLocation" x="709" y="872"/>
         </scene>
         <!--All-->
         <scene sceneID="Nki-YV-4Qg">
@@ -343,7 +343,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="tickerLabel" destination="tmo-Kq-DyM" id="Gpw-6n-WM8"/>
-                                    <segue destination="eyk-YM-fji" kind="showDetail" id="9lc-Ai-HLV"/>
+                                    <segue destination="eyk-YM-fji" kind="showDetail" identifier="showDetail" id="9lc-Ai-HLV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,44 +386,12 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="5SQ-V5-iJp" kind="relationship" relationship="rootViewController" id="1ve-9n-BYc"/>
+                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="G6Q-FX-DqV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-c4-fno" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1356" y="2537"/>
-        </scene>
-        <!--Favourite Detail View Controller-->
-        <scene sceneID="VlH-ny-nTH">
-            <objects>
-                <viewController id="5SQ-V5-iJp" customClass="FavouriteDetailViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ht9-2c-YMm"/>
-                        <viewControllerLayoutGuide type="bottom" id="wFY-2X-tHM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2md-A3-QDC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWD-5h-Y89">
-                                <rect key="frame" x="277" y="263" width="44" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="KJJ-0j-286"/>
-                    <connections>
-                        <outlet property="label" destination="VWD-5h-Y89" id="ioI-GL-Za0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ge-7a-PcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-536" y="2537"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="vbv-si-bwQ">
@@ -578,7 +546,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
         <segue reference="9lc-Ai-HLV"/>
+        <segue reference="6S0-TO-JiA"/>
+        <segue reference="G6Q-FX-DqV"/>
     </inferredMetricsTieBreakers>
 </document>

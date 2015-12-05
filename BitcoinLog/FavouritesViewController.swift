@@ -39,10 +39,10 @@ class FavouritesViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = rates[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! FavouriteDetailViewController
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 
-                controller.ticker = object.tickerSymbol!
-/*                controller.navigationItem.title = object.tickerSymbol*/
+                controller.detailItem = object
+                controller.navigationItem.title = object.tickerSymbol!
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -66,8 +66,7 @@ class FavouritesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FavouriteCell", forIndexPath: indexPath) as! FavouritesTableViewCell
         
-        // TODO: fix this
-        cell.tickerLabel.text = rates[indexPath.row].tickerSymbol ?? "nil"
+        cell.tickerLabel.text = rates[indexPath.row].tickerSymbol
         
         return cell
     }

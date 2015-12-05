@@ -56,6 +56,7 @@ public class BitcoinApi {
         Alamofire.request(route.method, route.URLRequest).responseObject() { (response: Response<BitcoinRate, NSError>) -> Void in
             if response.result.isSuccess {
                 if let type = response.result.value {
+                    type.tickerSymbol = ticker
                     deferred.fulfill(type)
                 } else {
                     deferred.reject(response.result.error!)
