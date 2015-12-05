@@ -60,7 +60,11 @@ class FavouritesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let rateObject = self.rates[indexPath.row]
+
+            FavouritesService.removeFavourite(rateObject.tickerSymbol!)
             self.rates.removeAtIndex(indexPath.row)
+
             tableView.deleteRowsAtIndexPaths([indexPath],  withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
