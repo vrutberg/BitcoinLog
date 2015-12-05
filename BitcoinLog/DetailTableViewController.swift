@@ -21,11 +21,22 @@ class DetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "updateData", forControlEvents: UIControlEvents.ValueChanged)
+        
         self.configureView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func updateData() {
+        BitcoinApi.fetchSingleRate((rate?.tickerSymbol!)!).then({ rate in
+            self.rate = rate
+            self.configureView()
+            self.refreshControl?.endRefreshing()
+        })
     }
     
     func configureView() {
