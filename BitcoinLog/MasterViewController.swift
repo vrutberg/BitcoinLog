@@ -34,13 +34,11 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAllRates(self.populateData)
-    }
-    
-    func populateData(objects: BitcoinRateList) {
-        self.objects = objects.bitcoinRates
-        self.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
+        BitcoinApi.fetchAllRatesWithPromise().then({ bitcoinRateList in
+            self.objects = bitcoinRateList.bitcoinRates
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
