@@ -60,6 +60,18 @@ class FavouritesViewController: UITableViewController {
         return rates.count
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let rateToBeRemoved = self.rates[indexPath.row]
+            FavouritesService.removeFavourite(rateToBeRemoved.tickerSymbol!)
+            self.populateData()
+        }
+    }
+    
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 30
     }
