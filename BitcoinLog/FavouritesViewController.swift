@@ -41,6 +41,7 @@ class FavouritesViewController: UITableViewController {
                 let object = rates[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 
+                controller.shouldShowFavouriteButton = false
                 controller.detailItem = object
                 controller.navigationItem.title = object.tickerSymbol!
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()

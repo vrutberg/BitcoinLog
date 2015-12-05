@@ -10,6 +10,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var detailItem: BitcoinRate?
+    
+    var shouldShowFavouriteButton = true {
+        didSet {
+            if shouldShowFavouriteButton == false {
+                favouriteButton.hidden = true
+            }
+        }
+    }
+    
+    @IBOutlet weak var favouriteButton: UIButton!
 
     @IBAction func favouiteButtonTouched(sender: UIButton) {
         if let item = self.detailItem {
