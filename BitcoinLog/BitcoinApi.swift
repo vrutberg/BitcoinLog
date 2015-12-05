@@ -22,7 +22,7 @@ public class BitcoinApi {
         var promises: [Promise<BitcoinRate>] = []
             
         for ticker in tickers {
-            promises.append(self.fetchSingleRateWithPromise(ticker))
+            promises.append(self.fetchSingleRate(ticker))
         }
             
         when(promises).then({ rates in
@@ -32,7 +32,7 @@ public class BitcoinApi {
         return deferred.promise
     }
     
-    public static func fetchAllRatesWithPromise() -> Promise<BitcoinRateList> {
+    public static func fetchAllRates() -> Promise<BitcoinRateList> {
         let deferred = Promise<BitcoinRateList>.pendingPromise()
         let route = BitcoinRequestRouter.AllRates
         
@@ -49,7 +49,7 @@ public class BitcoinApi {
         return deferred.promise
     }
     
-    public static func fetchSingleRateWithPromise(ticker: String) -> Promise<BitcoinRate> {
+    public static func fetchSingleRate(ticker: String) -> Promise<BitcoinRate> {
         let deferred = Promise<BitcoinRate>.pendingPromise()
         let route = BitcoinRequestRouter.SingleRate(ticker)
         
@@ -65,24 +65,5 @@ public class BitcoinApi {
         }
         
         return deferred.promise
-    }
-    
-    
-    public static func fetchAllRates<T : ResponseObjectSerializable>(callback: (value: T) -> Void) {
-        self.makeApiCall(BitcoinRequestRouter.AllRates, callback: callback)
-    }
-    
-    public static func fetchSingleRate<T : ResponseObjectSerializable>(ticker: String, callback: (value: T) -> Void) {
-        self.makeApiCall(BitcoinRequestRouter.SingleRate(ticker), callback: callback)
-    }
-    
-    private static func makeApiCall<T: ResponseObjectSerializable>(route: BitcoinRequestRouter, callback: (value: T) -> Void) {
-        Alamofire.request(route.method, route.URLRequest).responseObject() { (response: Response<T, NSError>) -> Void in
-            if response.result.isSuccess {
-                if let type = response.result.value {
-                    callback(value: type)
-                }
-            }
-        }
     }
 }

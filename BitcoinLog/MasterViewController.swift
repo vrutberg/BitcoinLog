@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAllRatesWithPromise().then({ bitcoinRateList in
+        BitcoinApi.fetchAllRates().then({ bitcoinRateList in
             self.objects = bitcoinRateList.bitcoinRates
         })
     }
