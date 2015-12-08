@@ -410,10 +410,10 @@
             </objects>
             <point key="canvasLocation" x="-2080" y="2413"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Mjh-FG-twM">
             <objects>
-                <tabBarController id="46L-O5-Uwo" customClass="MainTabBarController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="46L-O5-Uwo" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gXe-pa-RLT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
