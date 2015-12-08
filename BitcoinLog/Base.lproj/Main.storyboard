@@ -298,7 +298,7 @@
         <!--All-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
-                <splitViewController title="All" id="H1p-Uh-vWS" customClass="MasterDefaultSplitViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController title="All" id="H1p-Uh-vWS" customClass="CollapsingSplitViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="XzN-LA-sYR"/>
                     <toolbarItems/>
                     <connections>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="-1356" y="2537"/>
         </scene>
-        <!--Master Default Split View Controller-->
+        <!--Collapsing Split View Controller-->
         <scene sceneID="vbv-si-bwQ">
             <objects>
-                <splitViewController id="Jos-I7-mh9" customClass="MasterDefaultSplitViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="Jos-I7-mh9" customClass="CollapsingSplitViewController" customModule="BitcoinLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="WQ2-LL-CWz"/>
                     <connections>
                         <segue destination="Bd7-MY-w06" kind="relationship" relationship="masterViewController" id="AiN-fE-GJD"/>
