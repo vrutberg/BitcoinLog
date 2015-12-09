@@ -9,8 +9,6 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
-    let api = BitcoinApiImpl.create()
-
     var vm: DetailTableViewViewModel?
     var ticker: String?
 

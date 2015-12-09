@@ -9,11 +9,9 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
     let api = BitcoinApiImpl.create()
-
-    var detailViewController: DetailViewController? = nil
-    var objects = [BitcoinRate]() {
+    
+    var rateList: BitcoinRateList = BitcoinRateList(rates: []) {
         didSet {
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
@@ -22,12 +20,6 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "updateData", forControlEvents: UIControlEvents.ValueChanged)
@@ -42,7 +34,7 @@ class MasterViewController: UITableViewController {
     
     func updateData() {
         api.fetchAllRates().then({ bitcoinRateList in
-            self.objects = bitcoinRateList.bitcoinRates
+            self.rateList = bitcoinRateList
         })
     }
 
@@ -56,7 +48,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {            
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row]
+                let object = self.rateList.bitcoinRates[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 
                 controller.detailItem = object
@@ -74,7 +66,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return self.rateList.bitcoinRates.count
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -83,7 +75,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! BitcoinValueTableViewCell
-        let object = objects[indexPath.row]
+        let object = self.rateList.bitcoinRates[indexPath.row]
         
         cell.tickerLabel.text = object.tickerSymbol
         cell.valueLabel.text = String(object.last)
