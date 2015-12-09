@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 public class BitcoinRate : ResponseObjectSerializable {
-    var tickerSymbol: String?
+    var tickerSymbol: String
     let timestamp: String
     
     let avg24h: Float
@@ -23,10 +23,22 @@ public class BitcoinRate : ResponseObjectSerializable {
     
     @objc required public convenience init?(representation: AnyObject) {
         let json = JSON(representation)
-        self.init(tickerSymbol: nil, json: json)
+        self.init(tickerSymbol: "-", json: json)
+    }
+
+    init() {
+        self.tickerSymbol = "-"
+        self.timestamp = "-"
+
+        self.avg24h = 0.0
+        self.ask = 0.0
+        self.bid = 0.0
+        self.last = 0.0
+        self.volume_btc = 0.0
+        self.volume_percent = 0.0
     }
     
-    init(tickerSymbol: String?, json: JSON) {
+    init(tickerSymbol: String, json: JSON) {
         self.tickerSymbol = tickerSymbol
         self.timestamp = json["timestamp"].stringValue
         self.avg24h = json["24h_avg"].floatValue

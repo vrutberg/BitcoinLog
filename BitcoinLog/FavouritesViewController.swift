@@ -38,7 +38,7 @@ class FavouritesViewController: UITableViewController {
                 
                 controller.shouldShowFavouriteButton = false
                 controller.detailItem = object
-                controller.navigationItem.title = object.tickerSymbol!
+                controller.navigationItem.title = object.tickerSymbol
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -63,7 +63,7 @@ class FavouritesViewController: UITableViewController {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let rateObject = self.rates[indexPath.row]
 
-            FavouritesService.removeFavourite(rateObject.tickerSymbol!)
+            FavouritesService.removeFavourite(rateObject.tickerSymbol)
             self.rates.removeAtIndex(indexPath.row)
 
             tableView.deleteRowsAtIndexPaths([indexPath],  withRowAnimation: UITableViewRowAnimation.Automatic)

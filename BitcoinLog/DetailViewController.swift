@@ -23,10 +23,10 @@ class DetailViewController: UIViewController {
 
     @IBAction func favouiteButtonTouched(sender: UIButton) {
         if let item = self.detailItem {
-            if FavouritesService.isFavourite(item.tickerSymbol!) {
-                FavouritesService.removeFavourite(item.tickerSymbol!)
+            if FavouritesService.isFavourite(item.tickerSymbol) {
+                FavouritesService.removeFavourite(item.tickerSymbol)
             } else {
-                FavouritesService.addFavourite(item.tickerSymbol!)
+                FavouritesService.addFavourite(item.tickerSymbol)
             }
         }
     }
@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "tableViewSegue" {
             let detailTableViewController = segue.destinationViewController as! DetailTableViewController
-            detailTableViewController.rate = self.detailItem
+            detailTableViewController.ticker = self.detailItem!.tickerSymbol
         }
     }
 

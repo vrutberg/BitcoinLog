@@ -9,8 +9,10 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
-
     let api = BitcoinApiImpl.create()
+
+    var vm: DetailTableViewViewModel?
+    var ticker: String?
 
     @IBOutlet weak var bidValueLevel: UILabel!
     @IBOutlet weak var lastValueLabel: UILabel!
@@ -18,37 +20,29 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var askValueLabel: UILabel!
     @IBOutlet weak var volumePercentValueLabel: UILabel!
 
-    var rate: BitcoinRate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "updateData", forControlEvents: UIControlEvents.ValueChanged)
-        
-        self.configureView()
+
+        self.vm = DetailTableViewViewModel(ticker: self.ticker!)
+        self.updateData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     func updateData() {
-        api.fetchSingleRate((rate?.tickerSymbol!)!).then({ rate in
-            self.rate = rate
+        vm!.fetchData().then({
             self.configureView()
             self.refreshControl?.endRefreshing()
         })
     }
     
     func configureView() {
-        if let detail = self.rate {
-            askValueLabel.text = String(detail.ask) + " " + detail.tickerSymbol!
-            bidValueLevel.text = String(detail.bid) + " " + detail.tickerSymbol!
-            lastValueLabel.text = String(detail.last) + " " + detail.tickerSymbol!
-            
-            volumeValueLabel.text = String(detail.volume_btc) + " BTC"
-            volumePercentValueLabel.text = String(detail.volume_percent) + " %"
-        }
+        askValueLabel.text = vm!.ask
+        bidValueLevel.text = vm!.bid
+        lastValueLabel.text = vm!.last
+
+        volumeValueLabel.text = vm!.volume
+        volumePercentValueLabel.text = vm!.volumePercent
     }
 }
