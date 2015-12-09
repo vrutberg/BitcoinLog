@@ -10,6 +10,8 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    let api = BitcoinApiImpl.create()
+
     var detailViewController: DetailViewController? = nil
     var objects = [BitcoinRate]() {
         didSet {
@@ -39,7 +41,7 @@ class MasterViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchAllRates().then({ bitcoinRateList in
+        api.fetchAllRates().then({ bitcoinRateList in
             self.objects = bitcoinRateList.bitcoinRates
         })
     }

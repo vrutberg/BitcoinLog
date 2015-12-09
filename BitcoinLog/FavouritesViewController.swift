@@ -10,13 +10,14 @@ import UIKit
 
 class FavouritesViewController: UITableViewController {
     var rates = [BitcoinRate]()
+    let api = BitcoinApiImpl.create()
     
     override func viewDidAppear(animated: Bool) {
         self.populateData()
     }
     
     func populateData() {
-        BitcoinApi.fetchMultipleRates(FavouritesService.getAll()).then({ rateList in
+        api.fetchMultipleRates(FavouritesService.getAll()).then({ rateList in
             self.rates = rateList.bitcoinRates
             self.tableView.reloadData()
         })

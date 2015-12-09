@@ -9,7 +9,9 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
-    
+
+    let api = BitcoinApiImpl.create()
+
     @IBOutlet weak var bidValueLevel: UILabel!
     @IBOutlet weak var lastValueLabel: UILabel!
     @IBOutlet weak var volumeValueLabel: UILabel!
@@ -32,7 +34,7 @@ class DetailTableViewController: UITableViewController {
     }
     
     func updateData() {
-        BitcoinApi.fetchSingleRate((rate?.tickerSymbol!)!).then({ rate in
+        api.fetchSingleRate((rate?.tickerSymbol!)!).then({ rate in
             self.rate = rate
             self.configureView()
             self.refreshControl?.endRefreshing()

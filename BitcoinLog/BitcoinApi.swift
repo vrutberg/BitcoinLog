@@ -11,13 +11,28 @@ import Alamofire
 import SwiftyJSON
 import PromiseKit
 
-public class BitcoinApi {
-    
-    public static func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList> {
+
+protocol BitcoinApi {
+    func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList>
+    func fetchMultipleRates(ticker: [String]) -> Promise<BitcoinRateList>
+
+    func fetchAllRates() -> Promise<BitcoinRateList>
+
+    func fetchSingleRate(ticker: String) -> Promise<BitcoinRate>
+}
+
+class BitcoinApiImpl: BitcoinApi {
+    private init() {}
+
+    class func create() -> BitcoinApi {
+        return BitcoinApiImpl()
+    }
+
+    func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList> {
         return fetchMultipleRates(tickers)
     }
     
-    public static func fetchMultipleRates(tickers: [String]) -> Promise<BitcoinRateList> {
+    func fetchMultipleRates(tickers: [String]) -> Promise<BitcoinRateList> {
         let deferred = Promise<BitcoinRateList>.pendingPromise()
         var promises: [Promise<BitcoinRate>] = []
             
@@ -32,7 +47,7 @@ public class BitcoinApi {
         return deferred.promise
     }
     
-    public static func fetchAllRates() -> Promise<BitcoinRateList> {
+    func fetchAllRates() -> Promise<BitcoinRateList> {
         let deferred = Promise<BitcoinRateList>.pendingPromise()
         let route = BitcoinRequestRouter.AllRates
         
@@ -49,7 +64,7 @@ public class BitcoinApi {
         return deferred.promise
     }
     
-    public static func fetchSingleRate(ticker: String) -> Promise<BitcoinRate> {
+    func fetchSingleRate(ticker: String) -> Promise<BitcoinRate> {
         let deferred = Promise<BitcoinRate>.pendingPromise()
         let route = BitcoinRequestRouter.SingleRate(ticker)
         
