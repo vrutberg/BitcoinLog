@@ -24,13 +24,23 @@ class DetailViewController: UIViewController {
     @IBAction func favouiteButtonTouched(sender: UIButton) {
         if let item = self.detailItem {
             if FavouritesService.isFavourite(item.tickerSymbol) {
+                self.presentAlert("Favourite removed")
                 FavouritesService.removeFavourite(item.tickerSymbol)
             } else {
+                self.presentAlert("Favourite added")
                 FavouritesService.addFavourite(item.tickerSymbol)
             }
         }
     }
-    
+
+    private func presentAlert(text: String) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .Alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "tableViewSegue" {
             let detailTableViewController = segue.destinationViewController as! DetailTableViewController
