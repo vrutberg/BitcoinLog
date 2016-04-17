@@ -10,8 +10,8 @@ import Foundation
 import PromiseKit
 
 class DetailTableViewViewModel {
-    let api: BitcoinApi
-    let ticker: String
+    private let api: BitcoinApi
+    private let ticker: String
 
     var rate: BitcoinRate
 

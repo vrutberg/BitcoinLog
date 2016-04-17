@@ -11,7 +11,6 @@ import Alamofire
 import SwiftyJSON
 import PromiseKit
 
-
 protocol BitcoinApi {
     func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList>
     func fetchMultipleRates(ticker: [String]) -> Promise<BitcoinRateList>

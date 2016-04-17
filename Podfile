@@ -6,4 +6,8 @@ target 'BitcoinLog' do
   pod 'Alamofire', '~> 3.2.1'
   pod 'SwiftyJSON', '~> 2.3.1'
   pod 'PromiseKit', '~> 3.0'
+
+  target 'BitcoinLogTests' do
+    inherit! :search_paths
+  end
 end
