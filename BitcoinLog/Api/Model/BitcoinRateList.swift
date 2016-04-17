@@ -9,10 +9,14 @@
 import Foundation
 import SwiftyJSON
 
-public class BitcoinRateList : ResponseObjectSerializable {
+struct BitcoinRateList: ResponseObjectSerializable {
     let bitcoinRates: [BitcoinRate]
     
-    @objc required public init?(representation: AnyObject) {
+    init(rates: [BitcoinRate]) {
+        bitcoinRates = rates.sort { $0.tickerSymbol < $1.tickerSymbol }
+    }
+    
+    init(representation: AnyObject) {
         let json = JSON(representation)
         var arrayOfBitcoinRateObjects: [BitcoinRate] = []
         
@@ -22,10 +26,6 @@ public class BitcoinRateList : ResponseObjectSerializable {
             }
         }
         
-        bitcoinRates = arrayOfBitcoinRateObjects.sort { $0.tickerSymbol < $1.tickerSymbol }
-    }
-    
-    public init(rates: [BitcoinRate]) {
-        bitcoinRates = rates.sort { $0.tickerSymbol < $1.tickerSymbol }
+        self.init(rates: arrayOfBitcoinRateObjects)
     }
 }

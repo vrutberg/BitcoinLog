@@ -9,12 +9,12 @@
 import Foundation
 import Alamofire
 
-@objc public protocol ResponseObjectSerializable {
-    init?(representation: AnyObject)
+protocol ResponseObjectSerializable {
+    init(representation: AnyObject)
 }
 
 extension Alamofire.Request {
-    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (Response<T,NSError>) -> Void) -> Self {
+    func responseObject<T: ResponseObjectSerializable>(completionHandler: (Response<T,NSError>) -> Void) -> Self {
         let responseSerializer = ResponseSerializer<T,NSError> {
             request, response, data, error in
             
@@ -25,16 +25,10 @@ extension Alamofire.Request {
             
             switch result {
                 case .Success(let value):
-                    if let JSON = T(representation: value) {
-                        return .Success(JSON)
-                    } else {
-                        let failureReason = "JSON could not be serialized into response object \(value)"
-                        let error =  Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
-                        return .Failure(error)
-                    }
+                    let decodedObject = T(representation: value)
+                    return .Success(decodedObject)
                 case .Failure(let error):
                     return .Failure(error)
-                
             }
         }
         

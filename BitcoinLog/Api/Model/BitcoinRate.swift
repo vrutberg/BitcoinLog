@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-public class BitcoinRate : ResponseObjectSerializable {
+struct BitcoinRate: ResponseObjectSerializable {
     var tickerSymbol: String
     let timestamp: String
     
@@ -21,7 +21,7 @@ public class BitcoinRate : ResponseObjectSerializable {
     let volume_btc: Float
     let volume_percent: Float
     
-    @objc required public convenience init?(representation: AnyObject) {
+    init(representation: AnyObject) {
         let json = JSON(representation)
         self.init(tickerSymbol: "-", json: json)
     }
