@@ -35,7 +35,7 @@ class DetailTableViewViewModel {
         return String(rate.volume_percent) + " %"
     }
 
-    init(ticker: String, api: BitcoinApi = BitcoinApiImpl.create()) {
+    init(ticker: String, api: BitcoinApi = BitcoinApiFactory.get()) {
         self.api = api
         self.ticker = ticker
 

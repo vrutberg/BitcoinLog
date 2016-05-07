@@ -20,11 +20,20 @@ protocol BitcoinApi {
     func fetchSingleRate(ticker: String) -> Promise<BitcoinRate>
 }
 
-class BitcoinApiImpl: BitcoinApi {
-    private init() {}
+class BitcoinApiFactory {
+    private static var instance: BitcoinApi?
 
-    class func create() -> BitcoinApi {
-        return BitcoinApiImpl()
+    static func get() -> BitcoinApi {
+        if instance == nil {
+            instance = BitcoinApiImpl()
+        }
+
+        return instance!
+    }
+}
+
+class BitcoinApiImpl: BitcoinApi {
+    init() {
     }
 
     func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList> {

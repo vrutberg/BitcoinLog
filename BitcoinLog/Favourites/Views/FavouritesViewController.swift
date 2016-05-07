@@ -10,7 +10,7 @@ import UIKit
 
 class FavouritesViewController: UITableViewController {
     var rates = [BitcoinRate]()
-    let api = BitcoinApiImpl.create()
+    private let api = BitcoinApiFactory.get()
     
     override func viewDidAppear(animated: Bool) {
         self.populateData()

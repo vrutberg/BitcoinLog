@@ -9,7 +9,7 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-    let api = BitcoinApiImpl.create()
+    private let api = BitcoinApiFactory.get()
     
     var rateList: BitcoinRateList = BitcoinRateList(rates: []) {
         didSet {

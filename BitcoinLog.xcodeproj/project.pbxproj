@@ -99,6 +99,7 @@
 		1A8F94B2B23F37F9D2E3468E /* Pods-BitcoinLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitcoinLog.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitcoinLog/Pods-BitcoinLog.release.xcconfig"; sourceTree = "<group>"; };
 		3F6E925D81C109056A21F3BA /* Pods-BitcoinLogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitcoinLogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitcoinLogTests/Pods-BitcoinLogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5328B80A90BC64E55CBD2847 /* Pods_BitcoinLogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitcoinLogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F0390181CDE2FC400C1DA7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7F1EB83A1C17697B0044BDC7 /* CollapsingSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsingSplitViewController.swift; sourceTree = "<group>"; };
 		7F1EB83D1C18D4850044BDC7 /* BitcoinApiMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinApiMock.swift; sourceTree = "<group>"; };
 		7F9BA1DC1BE412BA00695B3F /* BitcoinLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +167,7 @@
 		46A3958D438C9B5467B201F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F0390181CDE2FC400C1DA7A /* Foundation.framework */,
 				7F9BA2171BE534F300695B3F /* Pods.xcodeproj */,
 				7F9BA2151BE534AD00695B3F /* Alamofire.swift */,
 				097B201293232B96CC555F77 /* Pods.framework */,
