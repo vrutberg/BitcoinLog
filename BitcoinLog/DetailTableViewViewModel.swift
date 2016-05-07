@@ -8,6 +8,7 @@
 
 import Foundation
 import PromiseKit
+import BitcoinApi
 
 class DetailTableViewViewModel {
     private let api: BitcoinApi

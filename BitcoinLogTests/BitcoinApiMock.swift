@@ -8,6 +8,7 @@
 
 import Foundation
 import PromiseKit
+@testable import BitcoinApi
 @testable import BitcoinLog
 
 class BitcoinApiMock: BitcoinApi {

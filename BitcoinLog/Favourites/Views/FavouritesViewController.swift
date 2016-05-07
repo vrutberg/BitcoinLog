@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BitcoinApi
 
 class FavouritesViewController: UITableViewController {
     var rates = [BitcoinRate]()

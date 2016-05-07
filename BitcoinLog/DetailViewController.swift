@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BitcoinApi
 
 class DetailViewController: UIViewController {
     var detailItem: BitcoinRate?

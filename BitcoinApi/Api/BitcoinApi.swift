@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import PromiseKit
 
-protocol BitcoinApi {
+public protocol BitcoinApi {
     func fetchMultipleRates(tickers: String...) -> Promise<BitcoinRateList>
     func fetchMultipleRates(ticker: [String]) -> Promise<BitcoinRateList>
 
@@ -20,10 +20,10 @@ protocol BitcoinApi {
     func fetchSingleRate(ticker: String) -> Promise<BitcoinRate>
 }
 
-class BitcoinApiFactory {
+public class BitcoinApiFactory {
     private static var instance: BitcoinApi?
 
-    static func get() -> BitcoinApi {
+    public static func get() -> BitcoinApi {
         if instance == nil {
             instance = BitcoinApiImpl()
         }
