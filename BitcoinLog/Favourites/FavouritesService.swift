@@ -8,39 +8,54 @@
 
 import UIKit
 
-class FavouritesService {
-    private static let key = "favouriteExchangeRates"
+protocol FavouritesService {
+    func getAll() -> [String]
+    func isFavourite(ticker: String) -> Bool
+    func addFavourite(ticker: String)
+    func removeFavourite(ticker: String)
+}
 
-    private static func getUserDefaults() -> NSUserDefaults {
+class FavouritesServiceFactory {
+    private static let instance = FavouritesServiceImpl()
+
+    static func get() -> FavouritesService {
+        return instance
+    }
+}
+
+class FavouritesServiceImpl: FavouritesService {
+    private let STORAGE_KEY = "favouriteExchangeRates"
+
+    private func getUserDefaults() -> NSUserDefaults {
         return NSUserDefaults.standardUserDefaults()
     }
 
-    static func getAll() -> [String] {
-        return self.getUserDefaults().objectForKey(key) as? [String] ?? [String]()
+    func getAll() -> [String] {
+        return getUserDefaults().objectForKey(STORAGE_KEY) as? [String] ?? [String]()
     }
 
-    static func isFavourite(ticker: String) -> Bool {
-        return self.getAll().contains(ticker)
+    func isFavourite(ticker: String) -> Bool {
+        return getAll().contains(ticker)
     }
     
-    static func addFavourite(ticker: String) {
-        var favourites = self.getAll()
+    func addFavourite(ticker: String) {
+        var favourites = getAll()
         
         if !favourites.contains(ticker) {
             favourites.append(ticker)
                 
-            let userDefaults = self.getUserDefaults()
-            userDefaults.setObject(favourites, forKey: self.key)
+            let userDefaults = getUserDefaults()
+            userDefaults.setObject(favourites, forKey: STORAGE_KEY)
             userDefaults.synchronize()
         }
     }
     
-    static func removeFavourite(ticker: String) {
-        let favourites = self.getAll()
+    func removeFavourite(ticker: String) {
+        let favourites = getAll()
         let filteredFavourites = favourites.filter() { $0 != ticker }
 
-        let userDefaults = self.getUserDefaults()
-        userDefaults.setObject(filteredFavourites, forKey: self.key)
+        let userDefaults = getUserDefaults()
+        userDefaults.setObject(filteredFavourites, forKey: STORAGE_KEY)
         userDefaults.synchronize()
     }
 }

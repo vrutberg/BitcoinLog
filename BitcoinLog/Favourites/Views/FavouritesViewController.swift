@@ -12,13 +12,14 @@ import BitcoinApi
 class FavouritesViewController: UITableViewController {
     var rates = [BitcoinRate]()
     private let api = BitcoinApiFactory.get()
+    private let favouritesService = FavouritesServiceFactory.get()
     
     override func viewDidAppear(animated: Bool) {
         self.populateData()
     }
     
     func populateData() {
-        api.fetchMultipleRates(FavouritesService.getAll()).then({ rateList in
+        api.fetchMultipleRates(favouritesService.getAll()).then({ rateList in
             self.rates = rateList.bitcoinRates
             self.tableView.reloadData()
         })
@@ -64,7 +65,7 @@ class FavouritesViewController: UITableViewController {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let rateObject = self.rates[indexPath.row]
 
-            FavouritesService.removeFavourite(rateObject.tickerSymbol)
+            favouritesService.removeFavourite(rateObject.tickerSymbol)
             self.rates.removeAtIndex(indexPath.row)
 
             tableView.deleteRowsAtIndexPaths([indexPath],  withRowAnimation: UITableViewRowAnimation.Automatic)

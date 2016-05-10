@@ -10,6 +10,8 @@ import UIKit
 import BitcoinApi
 
 class DetailViewController: UIViewController {
+    private let favouritesService = FavouritesServiceFactory.get()
+
     var detailItem: BitcoinRate?
     
     var shouldShowFavouriteButton = true {
@@ -24,12 +26,12 @@ class DetailViewController: UIViewController {
 
     @IBAction func favouiteButtonTouched(sender: UIButton) {
         if let item = self.detailItem {
-            if FavouritesService.isFavourite(item.tickerSymbol) {
+            if favouritesService.isFavourite(item.tickerSymbol) {
                 self.presentAlert("Favourite removed")
-                FavouritesService.removeFavourite(item.tickerSymbol)
+                favouritesService.removeFavourite(item.tickerSymbol)
             } else {
                 self.presentAlert("Favourite added")
-                FavouritesService.addFavourite(item.tickerSymbol)
+                favouritesService.addFavourite(item.tickerSymbol)
             }
         }
     }
